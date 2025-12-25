@@ -22,7 +22,7 @@ public class RabbitMQListener {
     private final TemperatureMonitoringService temperatureMonitoringService;
 
     @SneakyThrows
-    @RabbitListener(queues = QUEUE)
+    @RabbitListener(queues = QUEUE, concurrency = "2-3")
     public void handle(@Payload TemperatureLogData data,
                        @Headers Map<String, Object> headers) {
 

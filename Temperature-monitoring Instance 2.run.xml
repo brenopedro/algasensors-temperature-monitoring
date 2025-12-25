@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Temperature-monitoring Instance 2" type="Application" factoryName="Application">
+    <envs>
+      <env name="SERVER_PORT" value="0" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.algaworks.algasensors.temperature_monitoring.TemperatureMonitoringApplication" />
+    <module name="temperature-monitoring.main" />
+    <option name="VM_PARAMETERS" value="-XX:MaxRAM=256m" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/microsservices/temperature-monitoring" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
