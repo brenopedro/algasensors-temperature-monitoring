@@ -37,7 +37,9 @@ public class SensorAlertController {
         sensorAlert.setMaxTemperature(input.getMaxTemperature());
         sensorAlert.setMinTemperature(input.getMinTemperature());
 
-        return toOutput(sensorAlertRepository.save(sensorAlert));
+        SensorAlert alertSaved = sensorAlertRepository.saveAndFlush(sensorAlert);
+
+        return toOutput(alertSaved);
     }
 
     @DeleteMapping
