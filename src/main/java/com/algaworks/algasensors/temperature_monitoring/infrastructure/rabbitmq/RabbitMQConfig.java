@@ -8,8 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import tools.jackson.databind.json.JsonMapper;
 
-import static com.algaworks.algasensors.temperature_monitoring.infrastructure.rabbitmq.RabbitMQQueueConstants.EXCHANGE;
-import static com.algaworks.algasensors.temperature_monitoring.infrastructure.rabbitmq.RabbitMQQueueConstants.QUEUE;
+import static com.algaworks.algasensors.temperature_monitoring.infrastructure.rabbitmq.RabbitMQQueueConstants.*;
 
 
 @Configuration
@@ -26,13 +25,23 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Queue queue() {
-        return QueueBuilder.durable(QUEUE).build();
+    public Queue queueProcessTemperature() {
+        return QueueBuilder.durable(QUEUE_PROCESS_TEMPERATURE).build();
     }
 
     @Bean
-    public Binding binding() {
-        return BindingBuilder.bind(queue()).to(exchange());
+    public Queue queueAlerting() {
+        return QueueBuilder.durable(QUEUE_PROCESS_ALERTING).build();
+    }
+
+    @Bean
+    public Binding bindingProcessTemperature() {
+        return BindingBuilder.bind(queueProcessTemperature()).to(exchange());
+    }
+
+    @Bean
+    public Binding bindingAlerting() {
+        return BindingBuilder.bind(queueAlerting()).to(exchange());
     }
 
     public FanoutExchange exchange() {
